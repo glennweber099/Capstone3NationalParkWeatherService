@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.Models
 {
-    public class _SurveyModelVM
+    public class SurveyModelVM
     {
         public class SurveyModel
         {

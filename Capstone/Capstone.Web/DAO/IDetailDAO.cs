@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.DAO
 {
-    interface IDetailDAO
+    public interface IDetailDAO
     {
         IList<ParkModel> GetParksIndex();
         ParkModel GetPark(string parkCode);

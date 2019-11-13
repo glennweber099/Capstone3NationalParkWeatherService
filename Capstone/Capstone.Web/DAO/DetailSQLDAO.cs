@@ -27,17 +27,23 @@ namespace Capstone.Web.DAO
                     // Open the connection
                     conn.Open();
 
-                    string sql = "SELECT * from park JOIN weather ON weather.parkCode = park.parkCode WHERE park.parkCode = '@parkCode'";
+                    string sql = "SELECT * from park JOIN weather ON weather.parkCode = park.parkCode WHERE park.parkCode = @parkCode";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@parkCode", parkCode);
-
+                    if (String.IsNullOrEmpty(parkCode))
+                    {
+                        cmd.Parameters.AddWithValue("@parkCode", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@parkCode", parkCode);
+                    }
                     // Execute the command
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     // Loop through each row
                     while (reader.Read())
                     {
-                        output = RowToObject(reader);
+                        output = RowTooObject(reader);
                     }
                 }
             }
@@ -101,6 +107,28 @@ namespace Capstone.Web.DAO
             park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
             park.ParkDescription = Convert.ToString(reader["parkDescription"]);
             park.EntryFee = Convert.ToDecimal(reader["entryFee"]); 
+            park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
+
+            return park;
+        }
+
+        private ParkModel RowTooObject(SqlDataReader reader)
+        {
+            ParkModel park = new ParkModel();
+            park.ParkCode = Convert.ToString(reader["parkCode"]);
+            park.ParkName = Convert.ToString(reader["parkName"]);
+            park.State = Convert.ToString(reader["state"]);
+            park.Acreage = Convert.ToInt32(reader["acreage"]);
+            park.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
+            park.MilesOfTrail = Convert.ToInt32(reader["milesOfTrail"]);
+            park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
+            park.Climate = Convert.ToString(reader["climate"]);
+            park.YearFounded = Convert.ToInt32(reader["yearFounded"]);
+            park.AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]);
+            park.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
+            park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
+            park.ParkDescription = Convert.ToString(reader["parkDescription"]);
+            park.EntryFee = Convert.ToDecimal(reader["entryFee"]);
             park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
             park.Day = Convert.ToInt32(reader["fiveDayForecastValue"]);
             park.Low = Convert.ToInt32(reader["low"]);

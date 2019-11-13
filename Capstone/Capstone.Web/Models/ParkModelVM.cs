@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.Models
 {
-    public class ParkModel
+    public class ParkModelVM
     {
+        public ParkModel park { get; set; }
+        public IList<ParkModel> Parks { get; set; }
         public string ParkCode { get; set; }
         public string ParkName { get; set; }
         public string State { get; set; }
         public int Acreage { get; set; }
         public int ElevationInFeet { get; set; }
-        public int MilesOfTrail  { get; set; }
+        public int MilesOfTrail { get; set; }
         public int NumberOfCampsites { get; set; }
         public string Climate { get; set; }
         public int YearFounded { get; set; }
