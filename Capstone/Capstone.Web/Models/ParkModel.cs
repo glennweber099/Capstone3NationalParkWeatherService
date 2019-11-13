@@ -15,16 +15,16 @@ namespace Capstone.Web.Models
         public int MilesOfTrail  { get; set; }
         public int NumberOfCampsites { get; set; }
         public string Climate { get; set; }
-        public DateTime YearFounded { get; set; }
+        public int YearFounded { get; set; }
         public int AnnualVisitorCount { get; set; }
         public string InspirationalQuote { get; set; }
         public string InspirationalQuoteSource { get; set; }
         public string ParkDescription { get; set; }
         public decimal EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
-        public int Day { get; set; }
-        public int Low { get; set; }
-        public int High { get; set; }
+        public int? Day { get; set; }
+        public int? Low { get; set; }
+        public int? High { get; set; }
         public string Forecast { get; set; }
     }
 }

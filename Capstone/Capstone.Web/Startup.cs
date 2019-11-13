@@ -42,7 +42,6 @@ namespace Capstone.Web
             // Then tell the DI Container what "implementation" to create whenever it is asked for a "service"
             services.AddScoped<IDetailDAO, DetailSQLDAO>(d => new DetailSQLDAO(connectionString));
             services.AddScoped<IFavoriteDAO, FavoriteSQLDAO>(d => new FavoriteSQLDAO(connectionString));
-            services.AddScoped<IIndexDAO, IndexSQLDAO>(d => new IndexSQLDAO(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

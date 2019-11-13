@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.DAO
 {
-    public class IFavoriteDAO
+    interface IFavoriteDAO
     {
     }
 }
