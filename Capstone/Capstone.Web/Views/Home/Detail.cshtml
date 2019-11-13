@@ -45,9 +45,81 @@
     <table>
         <tr>
             <td>
+                <p>Today</p>
+                @if (Model.Day == 1)
+                {
+                    <img src="~/images/@(Model.Forecast.ToLower().Replace(" ", "")).png" />
+                    <p>High: @Model.High Low: @Model.Low</p>
+                    @if (Model.Forecast.ToLower().Replace(" ", "") == "snow")
+                    {
+                        <p>Pack snowshoes</p>
+                    }
+                    else if (Model.Forecast.ToLower().Replace(" ", "") == "rain")
+                    {
+                        <p>Pack rain gear and wear waterproof shoes</p>
+                    }
+                    else if (Model.Forecast.ToLower().Replace(" ", "") == "sunny")
+                    {
+                        <p>Pack sunscreen</p>
+                    }
+                    else if (Model.Forecast.ToLower().Replace(" ", "") == "thunderstorms")
+                    {
+                        <p>Seek shelter and avoid hiking on exposed ridges</p>
+                    }
 
+                    @if (Model.High > 75)
+                    {
+                        <p>Bring an extra gallon of water</p>
+                    }
+                    if ((Model.High - Model.Low) > 20)
+                    {
+                        <p>Wear breathable layers</p>
+                    }
+                    if (Model.Low < 20)
+                    {
+                        <p>WARNING: Dangers occur with exposure to frigid temperatures</p>
+                    }
+                }
             </td>
-        </tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            @if (Model.Day == 2)
+                            {
+                                <img src="~/images/@(Model.Forecast.ToLower().Replace(" ", "")).png" />
+                                <p>High: @Model.High </p>
+                                <p>Low: @Model.Low</p>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.Day == 3)
+                            {
+                                <img src="~/images/@(Model.Forecast.ToLower().Replace(" ", "")).png" />
+                                <p>High: @Model.High </p>
+                                <p>Low: @Model.Low</p>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.Day == 4)
+                            {
+                                <img src="~/images/@(Model.Forecast.ToLower().Replace(" ", "")).png" />
+                                <p>High: @Model.High </p>
+                                <p>Low: @Model.Low</p>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.Day == 5)
+                            {
+                                <img src="~/images/@(Model.Forecast.ToLower().Replace(" ", "")).png" />
+                                <p>High: @Model.High </p>
+                                <p>Low: @Model.Low</p>
+                            }
+                        </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
     </table>
 </div>
 
