@@ -29,9 +29,8 @@ namespace Capstone.Web.Controllers
             //{
             //    park = Park
             //};
-            return View(Park);
+            return View(detailDAO.GetWeather(parkCode));
         }
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

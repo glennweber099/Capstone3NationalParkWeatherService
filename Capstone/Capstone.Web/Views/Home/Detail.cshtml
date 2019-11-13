@@ -1,4 +1,4 @@
-﻿@model ParkModel
+﻿@model ParkModelVM
 @{
     ViewData["Title"] = "Detail";
 }
@@ -52,6 +52,10 @@
             </tr>
         </tbody>
     </table>
+    @foreach (Weather weather in Model)
+    {
+
+    }
 </div>
 
 

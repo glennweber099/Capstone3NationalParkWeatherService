@@ -10,5 +10,6 @@ namespace Capstone.Web.DAO
     {
         IList<ParkModel> GetParksIndex();
         ParkModel GetPark(string parkCode);
+        IList<Weather> GetWeather(string parkCode);
     }
 }
