@@ -1,7 +1,55 @@
-﻿
+﻿@model ParkModel
 @{
     ViewData["Title"] = "Detail";
 }
 
-<h2>Detail</h2>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <img src="~/images/@(Model.ParkCode.ToLower()).jpg" />
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p>@Model.ParkName</p>
+                    <p>@Model.InspirationalQuote - @Model.InspirationalQuoteSource</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Year Founded: @Model.YearFounded</p>
+                    <p>@Model.ParkDescription</p>
+                    <p>@Model.State</p>
+                </td>
+            </tr>
+            <tr>
+                <td>Acreage: @Model.Acreage</td>
+                <td>Elevation: @Model.ElevationInFeet ft</td>
+                <td>Miles of Trail: @Model.MilesOfTrail miles</td>
+            </tr>
+            <tr>
+                <td>Number of Campsites: @Model.NumberOfCampsites</td>
+                <td>Annual Visitor Count: @Model.AnnualVisitorCount</td>
+                <td>Entry Fee: $@Model.EntryFee</td>
+            </tr>
+            <tr>
+                <td>Number of Animal Species: @Model.NumberOfAnimalSpecies</td>
+                <td>Climate: @Model.Climate</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
 

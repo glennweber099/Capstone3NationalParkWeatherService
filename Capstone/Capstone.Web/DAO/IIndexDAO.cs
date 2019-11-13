@@ -7,5 +7,6 @@ namespace Capstone.Web.DAO
 {
     public class IIndexDAO
     {
+
     }
 }
