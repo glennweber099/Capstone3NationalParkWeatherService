@@ -1,4 +1,4 @@
-﻿@model ParkModelVM
+﻿@model ParkModel
 @{
     ViewData["Title"] = "Detail";
 }
@@ -52,10 +52,9 @@
             </tr>
         </tbody>
     </table>
-    @foreach (Weather weather in Model)
-    {
-
-    }
+    <a asp-controller="Home" asp-action="GetWeather" asp-route-parkCode="@Model.ParkCode">
+        <p>Click Here To Get Weather</p>
+    </a>
 </div>
 
 

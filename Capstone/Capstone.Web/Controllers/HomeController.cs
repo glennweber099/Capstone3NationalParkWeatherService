@@ -29,9 +29,14 @@ namespace Capstone.Web.Controllers
             //{
             //    park = Park
             //};
-            return View(detailDAO.GetWeather(parkCode));
+            return View(Park);
         }
 
+        public IActionResult GetWeather(string parkCode)
+        {
+            IList<Weather> weathers = detailDAO.GetWeather(parkCode);
+            return View(weathers);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

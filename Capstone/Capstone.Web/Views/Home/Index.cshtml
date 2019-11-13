@@ -3,21 +3,23 @@
     ViewData["Title"] = "Home Page";
 }
 
-<tr>
+<table>
     @foreach (ParkModel park in Model)
     {
-    <td>
-        <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-            <img src="~/images/@(park.ParkCode.ToLower()).jpg" />
-        </a>
-    </td>
-    <td>
-        <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-            <p>@park.ParkName</p>
-        </a>
-        <p>
-            @park.ParkDescription
-        </p>
-    </td>
+        <tr>
+            <td style="padding-right:10px; padding-bottom: 40px;">
+                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
+                    <img src="~/images/@(park.ParkCode.ToLower()).jpg" />
+                </a>
+            </td>
+            <td style="padding-bottom: 40px;">
+                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
+                    <p>@park.ParkName</p>
+                </a>
+                <p>
+                    @park.ParkDescription
+                </p>
+            </td>
+        </tr>
     }
-</tr>
+</table>
