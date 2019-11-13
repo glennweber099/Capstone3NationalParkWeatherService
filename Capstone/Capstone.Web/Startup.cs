@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.DAO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,16 @@ namespace Capstone.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Globally add auto-validation for all controllers and post methods
+            services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            string connectionString = Configuration.GetConnectionString("NPGeek");
+
+            // Then tell the DI Container what "implementation" to create whenever it is asked for a "service"
+            services.AddScoped<IDetailDAO, DetailSQLDAO>(d => new DetailSQLDAO(connectionString));
+            services.AddScoped<IFavoriteDAO, FavoriteSQLDAO>(d => new FavoriteSQLDAO(connectionString));
+            services.AddScoped<IIndexDAO, IndexSQLDAO>(d => new IndexSQLDAO(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
