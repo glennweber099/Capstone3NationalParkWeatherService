@@ -27,7 +27,7 @@ namespace Capstone.Web.DAO
                     // Open the connection
                     conn.Open();
 
-                    string sql = "SELECT * from park JOIN weather ON weather.parkCode = park.parkCode WHERE park.parkCode = @parkCode";
+                    string sql = "SELECT * from park WHERE park.parkCode = @parkCode";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     if (String.IsNullOrEmpty(parkCode))
                     {
@@ -43,7 +43,7 @@ namespace Capstone.Web.DAO
                     // Loop through each row
                     while (reader.Read())
                     {
-                        output = RowTooObject(reader);
+                        output = RowToObject(reader);
                     }
                 }
             }
@@ -67,7 +67,7 @@ namespace Capstone.Web.DAO
                     // Open the connection
                     conn.Open();
 
-                    string sql = "select distinct park.parkCode, park.parkName, park.state, park.acreage, park.elevationInFeet, park.milesOfTrail, park.numberOfCampsites, park.climate, park.yearFounded, park.annualVisitorCount, park.inspirationalQuote, park.inspirationalQuoteSource, park.parkDescription, park.entryFee, park.numberOfAnimalSpecies from park join weather on park.parkCode = weather.parkCode group by park.parkCode, weather.parkCode, park.parkName, park.state, park.acreage, park.elevationInFeet, park.milesOfTrail, park.numberOfCampsites, park.climate, park.yearFounded, park.annualVisitorCount, park.inspirationalQuote, park.inspirationalQuoteSource, park.parkDescription, park.entryFee, park.numberOfAnimalSpecies, weather.fiveDayForecastValue, weather.low, weather.high, weather.forecast";
+                    string sql = "select distinct parkCode, * from park";
                     SqlCommand cmd = new SqlCommand(sql, conn);
 
                     // Execute the command
@@ -108,32 +108,6 @@ namespace Capstone.Web.DAO
             park.ParkDescription = Convert.ToString(reader["parkDescription"]);
             park.EntryFee = Convert.ToDecimal(reader["entryFee"]); 
             park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
-
-            return park;
-        }
-
-        private ParkModel RowTooObject(SqlDataReader reader)
-        {
-            ParkModel park = new ParkModel();
-            park.ParkCode = Convert.ToString(reader["parkCode"]);
-            park.ParkName = Convert.ToString(reader["parkName"]);
-            park.State = Convert.ToString(reader["state"]);
-            park.Acreage = Convert.ToInt32(reader["acreage"]);
-            park.ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]);
-            park.MilesOfTrail = Convert.ToInt32(reader["milesOfTrail"]);
-            park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
-            park.Climate = Convert.ToString(reader["climate"]);
-            park.YearFounded = Convert.ToInt32(reader["yearFounded"]);
-            park.AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]);
-            park.InspirationalQuote = Convert.ToString(reader["inspirationalQuote"]);
-            park.InspirationalQuoteSource = Convert.ToString(reader["inspirationalQuoteSource"]);
-            park.ParkDescription = Convert.ToString(reader["parkDescription"]);
-            park.EntryFee = Convert.ToDecimal(reader["entryFee"]);
-            park.NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]);
-            park.Day = Convert.ToInt32(reader["fiveDayForecastValue"]);
-            park.Low = Convert.ToInt32(reader["low"]);
-            park.High = Convert.ToInt32(reader["high"]);
-            park.Forecast = Convert.ToString(reader["forecast"]);
 
             return park;
         }
