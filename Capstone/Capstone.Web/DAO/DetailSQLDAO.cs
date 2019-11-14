@@ -162,10 +162,9 @@ namespace Capstone.Web.DAO
             {
                 ParkCode = Convert.ToString(row["parkCode"]),
                 Day = Convert.ToInt32(row["fiveDayForecastValue"]),
-                LowF = Convert.ToInt32(row["low"]),
-                HighF = Convert.ToInt32(row["high"]),
+                Low = Convert.ToInt32(row["low"]),
+                High = Convert.ToInt32(row["high"]),
                 Forecast = Convert.ToString(row["forecast"]),
-
             };
         }
     }
