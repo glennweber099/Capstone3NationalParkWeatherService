@@ -2,55 +2,49 @@
 @{
     ViewData["Title"] = "GetWeather";
 }
-<select name="units">
-    <option value="Farenheit">Farenheit</option>
-    <option value="Celcius">Celsius</option>
-</select>
-@if (units.SelectedItem.Text == "Farenheit")
-{ }
-@foreach (Weather weather in Model)
-{
-    @if (weather.Day == 1)
+    @foreach (Weather weather in Model)
     {
-        <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
-        <td></td>
-        <p>High: @weather.High</p>
-        <p>Low: @weather.Low</p>
-        @if (weather.Forecast.ToLower().Replace(" ", "") == "snow")
+        @if (weather.Day == 1)
         {
-            <p>Pack Snowshoes</p>
+            <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
+            <td></td>
+            <p>High: @weather.High</p>
+            <p>Low: @weather.Low</p>
+            @if (weather.Forecast.ToLower().Replace(" ", "") == "snow")
+            {
+                <p>Pack Snowshoes</p>
+            }
+            else if (weather.Forecast.ToLower().Replace(" ", "") == "rain")
+            {
+                <p>Pack raingear and wear waterproof shoes</p>
+            }
+            else if (weather.Forecast.ToLower().Replace(" ", "") == "thunderstorms")
+            {
+                <P>Seek shelter and avoid hiking on exposed ridges</P>
+            }
+            else if (weather.Forecast.ToLower().Replace(" ", "") == "sunny")
+            {
+                <p>Bring sunscreen</p>
+            }
+            @if ((weather.High - weather.Low) > 20)
+            {
+                <p>Wear breathable layers</p>
+            }
+            @if (weather.High > 75)
+            {
+                <p>Bring an extra gallon of water</p>
+            }
+            @if (weather.Low < 20)
+            {
+                <p>WARNING: STAY INSIDE FOOL</p>
+            }
         }
-        else if (weather.Forecast.ToLower().Replace(" ", "") == "rain")
+        else
         {
-            <p>Pack raingear and wear waterproof shoes</p>
-        }
-        else if (weather.Forecast.ToLower().Replace(" ", "") == "thunderstorms")
-        {
-            <P>Seek shelter and avoid hiking on exposed ridges</P>
-        }
-        else if (weather.Forecast.ToLower().Replace(" ", "") == "sunny")
-        {
-            <p>Bring sunscreen</p>
-        }
-        @if ((weather.High - weather.Low) > 20)
-        {
-            <p>Wear breathable layers</p>
-        }
-        @if (weather.High > 75)
-        {
-            <p>Bring an extra gallon of water</p>
-        }
-        @if (weather.Low < 20)
-        {
-            <p>WARNING: STAY INSIDE FOOL</p>
+            <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
+            <p>High: @weather.High</p>
+            <p>Low: @weather.Low</p>
         }
     }
-    else
-    {
-        <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
-        <p>High: @weather.High</p>
-        <p>Low: @weather.Low</p>
-    }
-}
-    
+
 

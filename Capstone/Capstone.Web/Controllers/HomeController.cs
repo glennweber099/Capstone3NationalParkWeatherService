@@ -29,10 +29,11 @@ namespace Capstone.Web.Controllers
             //{
             //    park = Park
             //};
+
             return View(Park);
         }
 
-        public IActionResult GetWeather(string parkCode)
+        public IActionResult GetWeather(string parkCode, string unit)
         {
             IList<Weather> weathers = detailDAO.GetWeather(parkCode);
             return View(weathers);

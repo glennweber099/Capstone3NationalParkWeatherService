@@ -52,9 +52,13 @@
             </tr>
         </tbody>
     </table>
-    <a asp-controller="Home" asp-action="GetWeather" asp-route-parkCode="@Model.ParkCode">
-        <p>Click Here To Get Weather</p>
-    </a>
+        <select asp-for="Unit">
+            <option value="Fahrenheit">Fahrenheit</option>
+            <option value="Celsius">Celsius</option>
+        </select>
+        <a asp-controller="Home" asp-action="GetWeather" asp-route-parkCode="@Model.ParkCode" asp-route-unit="@Model.Unit">
+            <p>Choose One, Then Click Here To Get The Weather</p>
+        </a>
 </div>
 
 
