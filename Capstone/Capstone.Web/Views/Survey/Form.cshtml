@@ -1,7 +1,47 @@
-﻿
+﻿@model SurveyModel
 @{
     ViewData["Title"] = "Form";
 }
 
-<h2>Form</h2>
+<h2>Vote For Your Favorite National Park!</h2>
 
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <table>
+        <tr>
+            <td>Favorite National Park</td>
+            <td>
+                <select asp-for="ParkCode">
+                    <option value="GCNP">Grand Canyon National Park</option>
+                    <option value="GNP">Glacier National Park</option>
+                    <option value="GSMNP">Great Smoky Mountain National Park</option>
+                    <option value="GTNP">Grand Teton National Park</option>
+                    <option value="MRNP">Mount Rainier National Park</option>
+                    <option value="RMNP">Rocky Mountain National Park</option>
+                    <option value="YNP">Yellowstone National Park</option>
+                    <option value="YNP2">Yosemite National Park</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input asp-for="Email" /><span asp-validation-for="Email"></span></td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td><input asp-for="State" /><span asp-validation-for="State"></span></td>
+        </tr>
+        <tr>
+            <td>Activity Level</td>
+            <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Inactive" />Inactive</td>
+            <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Sedentary" />Sedentary</td>
+            <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Active" />Active</td>
+            <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Extremely Active" />Extremely Active</td>
+            <td asp-validation-for="ActivityLevel" style="width: 19%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>

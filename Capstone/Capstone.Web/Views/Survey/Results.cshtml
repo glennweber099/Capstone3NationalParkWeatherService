@@ -1,7 +1,25 @@
-﻿
+﻿@model IList<FavoriteModel>
 @{
     ViewData["Title"] = "Results";
 }
-
-<h2>Results</h2>
+<section>
+    <h2>Favorite National Parks</h2>
+    <table style="width:100%;">
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Park Name</td>
+                <td>Votes</td>
+            </tr>
+            @foreach (FavoriteModel favorite in Model)
+            {
+                <tr>
+                    <td style="display:block; padding: 0; margin-bottom: 0px;"><p><strong><img src="~/images/@(favorite.ParkCode).jpg" /></strong></p></td>
+                    <td style="display:block; padding: 0; margin-top: 0px;"><p>@favorite.ParkName</p></td>
+                    <td style="display:block; padding: 0; margin-top: 10px;"><p>@favorite.Votes</p></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
 
