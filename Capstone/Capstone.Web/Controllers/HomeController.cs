@@ -50,23 +50,23 @@ namespace Capstone.Web.Controllers
             HttpContext.Session.SetString(unitSessionKey, unitJson);
         }
 
-        //private ParkModelVM GetUnitPreference()
-        //{
-        //    // Get the cart from session
-        //    string s = HttpContext.Session.GetString(unitSessionKey);
-        //    ParkModelVM park;
+        private ParkModelVM GetUnitPreference()
+        {
+            // Get the cart from session
+            string s = HttpContext.Session.GetString(unitSessionKey);
+            ParkModelVM park;
 
-        //    if (s == null || s.Length == 0)
-        //    {
-        //        park = new ParkModelVM();
-        //    }
-        //    else
-        //    {
-        //        // Deserialize to change from a string to an object (DSO)
-        //        park = JsonConvert.DeserializeObject<ParkModelVM>(s);
-        //    }
-        //    return park;
-        //}
+            if (s == null || s.Length == 0)
+            {
+                park = new ParkModelVM();
+            }
+            else
+            {
+                // Deserialize to change from a string to an object (DSO)
+                park = JsonConvert.DeserializeObject<ParkModelVM>(s);
+            }
+            return park;
+        }
 
         public IActionResult GetWeather(string parkCode)
         {

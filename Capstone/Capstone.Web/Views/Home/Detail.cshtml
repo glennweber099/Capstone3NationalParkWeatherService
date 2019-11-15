@@ -50,17 +50,15 @@
             <tr>
                 <td><p>Climate: @Model.Climate</p></td>
             </tr>
+            <tr>
+                <td>Make a selection below to see the weather forecast</td>
+            </tr>
         </tbody>
     </table>
-    <form method="post">
-        <select>
-            <option asp-for="Unit" value="Fahrenheit">Fahrenheit</option>
-            <option asp-for="Unit" value="Celsius">Celsius</option>
-        </select>
+    <form asp-controller="Home" asp-action="GetWeather" method="post">
+            <button input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" asp-route-unit="Unit" value="Fahrenheit">Fahrenheit</button>
+            <button input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" asp-route-unit="Unit" value="Celsius">Celsius</button>
     </form>
-        <a asp-controller="Home" asp-action="GetWeather" asp-route-parkCode="@Model.ParkCode" asp-route-unit="@Model.Unit">
-            <p>Choose One, Then Click Here To Get The Weather</p>
-        </a>
 </div>
 
 
