@@ -64,7 +64,7 @@ body {
     background: url(https://media.giphy.com/media/12OQNpEK2wWVfa/giphy.gif) no-repeat;
     background-size: contain;
     background-position: right;
-    background-attachment: fixed;
+    background-attachment: local;
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 255, 255, 0);
     font-weight: 900;
