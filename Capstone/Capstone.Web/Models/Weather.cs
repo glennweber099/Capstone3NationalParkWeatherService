@@ -14,7 +14,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return (Low - 32) * (5 / 9); 
+                return (int)((Low - 32) * (5.0 / 9.0)); 
             }
         }
         public int High { get; set; }
@@ -22,7 +22,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return (High - 32) * (5 / 9);
+                return (int)((High - 32) * (5.0 / 9.0));
             }
         }
         public string Forecast { get; set; } 

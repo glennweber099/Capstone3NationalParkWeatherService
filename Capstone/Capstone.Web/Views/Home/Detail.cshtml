@@ -55,9 +55,9 @@
             </tr>
         </tbody>
     </table>
-    <form asp-controller="Home" asp-action="GetWeather" method="post">
-            <button input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" asp-route-unit="Unit" value="Fahrenheit">Fahrenheit</button>
-            <button input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" asp-route-unit="Unit" value="Celsius">Celsius</button>
+    <form method="post">
+            <button asp-controller="Home" asp-action="GetWeatherFahrenheit"  input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode"  value="Fahrenheit">Fahrenheit</button>
+            <button asp-controller="Home" asp-action="GetWeatherCelsius"  input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" value="Celsius">Celsius</button>
     </form>
 </div>
 
