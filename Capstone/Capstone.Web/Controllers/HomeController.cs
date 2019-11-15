@@ -38,58 +38,15 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public IActionResult Detail(ParkModelVM parkModelVM)
         {
-            HttpContext.Session.SetString("unit", parkModelVM.Unit);
-            SaveUnitPreference(parkModelVM);
-            return RedirectToAction("GetWeather");
-        }
-
-        private void SaveUnitPreference(ParkModelVM parkModelVM)
-        {
-            // Jam that baby back into session
-            string unitJson = JsonConvert.SerializeObject(parkModelVM);
-            HttpContext.Session.SetString(unitSessionKey, unitJson);
-        }
-
-        private ParkModelVM GetUnitPreference()
-        {
-            // Get the cart from session
-            string s = HttpContext.Session.GetString(unitSessionKey);
-            ParkModelVM park;
-
-            if (s == null || s.Length == 0)
-            {
-                park = new ParkModelVM();
-            }
-            else
-            {
-                // Deserialize to change from a string to an object (DSO)
-                park = JsonConvert.DeserializeObject<ParkModelVM>(s);
-            }
-            return park;
+            HttpContext.Session.SetString(unitSessionKey, parkModelVM.Unit);
+            return RedirectToAction("GetWeather", new { parkCode = parkModelVM.ParkCode });
         }
 
         public IActionResult GetWeather(string parkCode)
         {
-            string s = HttpContext.Session.GetString(unitSessionKey);
-            ParkModelVM park;
-
-            if (s == null || s.Length == 0)
-            {
-                park = new ParkModelVM();
-            }
-            else
-            {
-                // Deserialize to change from a string to an object (DSO)
-                park = JsonConvert.DeserializeObject<ParkModelVM>(s);
-            }
-            if (park.Unit == "Fahrenheit")
-            {
-                return RedirectToAction("GetWeatherFahrenheit");
-            }
-            else
-            {
-                return RedirectToAction("GetWeatherCelsius");
-            }
+            ViewData["unit"] = HttpContext.Session.GetString(unitSessionKey);
+            IList<Weather> weathers = detailDAO.GetWeather(parkCode);
+            return View(weathers);
         }
 
         public IActionResult GetWeatherFahrenheit(string parkCode)

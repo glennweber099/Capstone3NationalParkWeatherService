@@ -12,14 +12,12 @@
                     <img src="~/images/@(park.ParkCode.ToLower()).jpg" />
                 </a>
             </td>
-            <td style="padding-bottom: 40px;">
+            <td style="padding-bottom: 50px;">
                 <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-                    <p>@park.ParkName</p>
+                    <p style="font-size: 22px">@park.ParkName</p>
                 </a>
-                <p>Located in @park.State</p>
-                <p>
-                    @park.ParkDescription
-                </p>
+                <p style="font-size: 18px">Located in @park.State</p>
+                <p style="font-size: 18px"> @park.ParkDescription</p>
             </td>
         </tr>
     }

@@ -6,58 +6,31 @@
 <div>
     <table>
         <thead>
-            <tr>
-                <td>
-                    <img src="~/images/@(Model.ParkCode).jpg" />
-                </td>
-            </tr>
+            <tr><td><img style="padding-bottom: 15px; height: 150%" src="~/images/@(Model.ParkCode).jpg" /></td></tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <p>@Model.ParkName</p>
-                    <p>@Model.InspirationalQuote - @Model.InspirationalQuoteSource</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>Year Founded: @Model.YearFounded</p>
-                    <p>@Model.ParkDescription</p>
-                    <p>@Model.State</p>
-                </td>
-            </tr>
-            <tr>
-                <td><p>Acreage: @Model.Acreage</p></td>
-            </tr>
-            <tr>
-                <td><p>Elevation: @Model.ElevationInFeet ft</p></td>
-            </tr>
-            <tr>
-                <td><p>Miles of Trail: @Model.MilesOfTrail miles</p></td>
-            </tr>
-            <tr>
-                <td><p>Number of Campsites: @Model.NumberOfCampsites</p></td>
-            </tr>
-            <tr>
-                <td><p>Annual Visitor Count: @Model.AnnualVisitorCount</p></td>
-            </tr>
-            <tr>
-                <td><p>Entry Fee: $@Model.EntryFee</p></td>
-            </tr>
-            <tr>
-                <td><p>Number of Animal Species: @Model.NumberOfAnimalSpecies</p></td>
-            </tr>
-            <tr>
-                <td><p>Climate: @Model.Climate</p></td>
-            </tr>
-            <tr>
-                <td>Make a selection below to see the weather forecast</td>
-            </tr>
+            <tr><td><p style="font-size: 22px; color:steelblue; padding-bottom: 10px;">@Model.ParkName</p></td> </tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">"@Model.InspirationalQuote" - @Model.InspirationalQuoteSource</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">@Model.ParkDescription</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Located in @Model.State</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Year Founded: @Model.YearFounded</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Acreage: @Model.Acreage</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Elevation: @Model.ElevationInFeet ft</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Number of Animal Species: @Model.NumberOfAnimalSpecies</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Miles of Trail: @Model.MilesOfTrail miles</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Number of Campsites: @Model.NumberOfCampsites</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Annual Visitor Count: @Model.AnnualVisitorCount</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Entry Fee: $@Model.EntryFee</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Climate: @Model.Climate</p></td></tr>
+            <tr><td><p style="font-size: 18px; padding-bottom: 10px;">Make a selection below to see the weather forecast</p></td></tr>
         </tbody>
     </table>
     <form method="post">
-            <button asp-controller="Home" asp-action="GetWeatherFahrenheit"  input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode"  value="Fahrenheit">Fahrenheit</button>
-            <button asp-controller="Home" asp-action="GetWeatherCelsius"  input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" value="Celsius">Celsius</button>
+        <button style="font-size: 20px" asp-controller="Home" asp-action="Detail" input type="submit" asp-route-unit="F" asp-route-parkcode="@Model.ParkCode" value="Fahrenheit">Fahrenheit</button>
+        <button style="font-size: 20px" asp-controller="Home" asp-action="Detail" input type="submit" asp-route-unit="C" asp-route-parkcode="@Model.ParkCode" value="Celsius">Celsius</button>
+        @*<button style="font-size: 20px" asp-controller="Home" asp-action="GetWeatherFahrenheit" input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" value="Fahrenheit">Fahrenheit</button>
+        <button style="font-size: 20px" asp-controller="Home" asp-action="GetWeatherCelsius" input type="submit" asp-for="Unit" asp-route-parkcode="@Model.ParkCode" value="Celsius">Celsius</button>*@
+
     </form>
 </div>
 

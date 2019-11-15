@@ -9,7 +9,7 @@
     <div asp-validation-summary="All"></div>
     <table>
         <tr>
-            <td>Favorite National Park</td>
+            <td class="surveyline">Favorite National Park</td>
             <td>
                 <select asp-for="ParkCode">
                     <option value="GCNP">Grand Canyon National Park</option>
@@ -24,15 +24,15 @@
             </td>
         </tr>
         <tr>
-            <td>Email</td>
+            <td class="surveyline">Email</td>
             <td><input asp-for="Email" /><span asp-validation-for="Email"></span></td>
         </tr>
         <tr>
-            <td>State</td>
+            <td class="surveyline">State</td>
             <td><input asp-for="State" /><span asp-validation-for="State"></span></td>
         </tr>
         <tr>
-            <td>Activity Level</td>
+            <td class="surveyline">Activity Level</td>
             <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Inactive" />Inactive</td>
             <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Sedentary" />Sedentary</td>
             <td style="width: 19%"><input type="radio" name="ActivityLevel" value="Active" />Active</td>

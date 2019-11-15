@@ -1,0 +1,78 @@
+﻿@model IList<Weather>
+@{
+    ViewData["Title"] = "GetWeatherFahrenheit";
+}
+<div class="flex-container">
+    @foreach (Weather weather in Model)
+    {
+        @if (weather.Day == 1)
+        {
+    <div class="flexdiv">
+        <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
+        @if ((string)ViewData["unit"] == "C")
+        {
+            <p>High: @weather.HighC° Celsius</p>
+            <p>Low: @weather.LowC° Celsius</p>
+        }
+        else
+        {
+            <p>
+                High: @weather.High° Fahrenheit
+            </p>
+            <p>Low: @weather.Low° Fahrenheit</p>
+
+        }
+        @if (weather.Forecast.ToLower().Replace(" ", "") == "snow")
+        {
+            <p>Pack Snowshoes</p>
+        }
+        else if (weather.Forecast.ToLower().Replace(" ", "") == "rain")
+        {
+            <p>Pack raingear and wear waterproof shoes</p>
+        }
+        else if (weather.Forecast.ToLower().Replace(" ", "") == "thunderstorms")
+        {
+            <P>Seek shelter and avoid hiking on exposed ridges</P>
+        }
+        else if (weather.Forecast.ToLower().Replace(" ", "") == "sunny")
+        {
+            <p>Bring sunscreen</p>
+        }
+        @if ((weather.High - weather.Low) > 20)
+        {
+            <p>Wear breathable layers</p>
+        }
+        @if (weather.High > 75)
+        {
+            <p>Bring an extra gallon of water</p>
+        }
+        @if (weather.Low < 20)
+        {
+            <p>WARNING: STAY INSIDE FOOL</p>
+        }
+    </div>
+        }
+        else
+        {
+            <div class="flexdiv">
+                <img src="~/images/@(weather.Forecast.ToLower().Replace(" ", "")).png" />
+
+                @if ((string)ViewData["unit"] == "C")
+                {
+                    <p>High: @weather.HighC° Celsius</p>
+                    <p>Low: @weather.LowC° Celsius</p>
+                }
+                else
+                {
+                    <p>High: @weather.High° Fahrenheit </p>
+                    <p>Low: @weather.Low° Fahrenheit</p>
+
+                }
+            </div>
+        }
+    }
+</div>
+  
+
+
+
