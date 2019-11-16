@@ -4,22 +4,23 @@
 }
 
 <div class="background">
-    <div class="transbox">
+    <span id="indexheadline">Explore Your National Parks</span>
     <table class="indextable">
+
         @foreach (ParkModel park in Model)
         {
-            <tr  class="indextable">
-                <td  class="indextable">
+            <tr class="indextable">
+                <td class="indextable">
                     <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
                         <img class="indextable" id="indeximage" src="~/images/@(park.ParkCode.ToLower()).jpg" />
                     </a>
                 </td>
-                <td  class="indextable">
+                <td class="indextable">
                     <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-                        <p  id="parktitle">@park.ParkName</p>
+                        <p id="parktitle">@park.ParkName</p>
                     </a>
-                    <p  class="indextable">Located in @park.State</p>
-                    <p  class="indextable" id="parkdescription"> @park.ParkDescription</p>
+                    <p class="indextable">Located in @park.State</p>
+                    <p class="indextable" id="parkdescription"> @park.ParkDescription</p>
                 </td>
             </tr>
         }
