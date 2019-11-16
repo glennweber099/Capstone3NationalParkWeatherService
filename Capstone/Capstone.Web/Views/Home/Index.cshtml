@@ -3,22 +3,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<table>
-    @foreach (ParkModel park in Model)
-    {
-        <tr>
-            <td style="padding-right:10px; padding-bottom: 40px;">
-                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-                    <img src="~/images/@(park.ParkCode.ToLower()).jpg" />
-                </a>
-            </td>
-            <td style="padding-bottom: 50px;">
-                <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
-                    <p style="font-size: 22px">@park.ParkName</p>
-                </a>
-                <p style="font-size: 18px">Located in @park.State</p>
-                <p style="font-size: 18px"> @park.ParkDescription</p>
-            </td>
-        </tr>
-    }
-</table>
+<div class="background">
+    <div class="transbox">
+    <table class="indextable">
+        @foreach (ParkModel park in Model)
+        {
+            <tr  class="indextable">
+                <td  class="indextable">
+                    <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
+                        <img class="indextable" id="indeximage" src="~/images/@(park.ParkCode.ToLower()).jpg" />
+                    </a>
+                </td>
+                <td  class="indextable">
+                    <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode">
+                        <p  id="parktitle">@park.ParkName</p>
+                    </a>
+                    <p  class="indextable">Located in @park.State</p>
+                    <p  class="indextable" id="parkdescription"> @park.ParkDescription</p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+    </div>
