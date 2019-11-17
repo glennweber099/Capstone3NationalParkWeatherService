@@ -218,8 +218,32 @@ input#Email{
 input#State{
     width: 293px;
 }
+
 footer
 {
     margin-left: 30%;
     color: white;
+}
+
+#resultsheadline{
+    font-size: 60px;
+    color: steelblue;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.resultrow img{
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    margin-right: 0px;
+}
+
+.resultrow p{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    text-wrap:normal;
+    width: 350px;
+    padding-bottom: 330px;
 }
